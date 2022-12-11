@@ -1,4 +1,5 @@
 ::  a space agent skeleton
+/-  *station
 /+  r-l=realm-lib
 /+  verb, dbug, defa=default-agent
 ::
@@ -47,10 +48,11 @@
     [cards this]
   ::
   ++  on-poke
-    |=  [mar=mark vaz=vase]
+    |=  cag=cage
     ~>  %bout.[0 '%station +on-poke']
     ^-  (quip card _this)
-    `this
+    =^  cards  state  abet:(poke:eng cag)
+    [cards this]
   ::
   ++  on-peek
     |=  =path
@@ -86,7 +88,6 @@
   --
 |_  [bol=bowl:gall dek=(list card)]
 +*  dat  .
-    rea  (re-abed:realms:r-l bol ~)
 ++  emit  |=(=card dat(dek [card dek]))
 ++  emil  |=(lac=(list card) dat(dek (welp lac dek)))
 ++  abet
@@ -102,4 +103,42 @@
   ^+  dat
   ?>  ?=([%0 *] q.vaz)
   dat(state !<(state-0 vaz))
+++  poke
+  |=  [mar=mark vaz=vase]
+  ?>  =(%noun mar)
+  =+  act=!<(action vaz)
+  ?-  -.act
+      %all
+    ~&  >>>
+      ^-  spaces:r-l
+      re-abet-saz:(re-abed:realms:r-l bol [%| ~])
+    dat
+  ::
+      %host  
+    ~&  >>
+      ^-  spaces:r-l
+      re-abet-saz:(re-abed:realms:r-l bol [%| `who.act])
+    dat
+  ::
+      %space
+    =+  rel=(re-abed:realms:r-l bol [%& sap.act])
+    ?-    wat.act
+        %spaces
+      ~&  >  `spaces:r-l`re-abet-saz:rel  dat
+        %detail
+      ~&  >  `space:r-l`re-abet-det:rel  dat
+        %host
+      ~&  >  `ship`re-abet-hos:rel  dat
+        %owners
+      ~&  >  `(set ship)`re-abet-own:rel  dat
+        %pending
+      ~&  >  `(set ship)`re-abet-pen:rel  dat
+        %initiates
+      ~&  >  `(set ship)`re-abet-ini:rel  dat
+        %members
+      ~&  >  `(set ship)`re-abet-mem:rel  dat
+        %administrators
+      ~&  >  `(set ship)`re-abet-adm:rel  dat
+    ==
+  ==
 --

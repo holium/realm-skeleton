@@ -1,4 +1,6 @@
-/+  verb, dbug, default-agent
+::  a space agent skeleton
+/+  r-l=realm-lib
+/+  verb, dbug, defa=default-agent
 ::
 |%
 ::
@@ -22,23 +24,23 @@
 =<
   |_  =bowl:gall
   +*  this  .
-      def  ~(. (default-agent this %|) bowl)
+      def  ~(. (defa this %|) bowl)
       eng   ~(. +> [bowl ~])
   ++  on-init
     ^-  (quip card _this)
-    ~>  %bout.[0 '%mine +on-init']
+    ~>  %bout.[0 '%station +on-init']
     =^  cards  state
       abet:init:eng
     [cards this]
   ::
   ++  on-save
     ^-  vase
-    ~>  %bout.[0 '%mine +on-save']
+    ~>  %bout.[0 '%station +on-save']
     !>(state)
   ::
   ++  on-load
     |=  ole=vase
-    ~>  %bout.[0 '%mine +on-load']
+    ~>  %bout.[0 '%station +on-load']
     ^-  (quip card _this)
     =^  cards  state
       abet:(load:eng ole)
@@ -46,44 +48,45 @@
   ::
   ++  on-poke
     |=  [mar=mark vaz=vase]
-    ~>  %bout.[0 '%mine +on-poke']
+    ~>  %bout.[0 '%station +on-poke']
     ^-  (quip card _this)
     `this
   ::
   ++  on-peek
     |=  =path
-    ~>  %bout.[0 '%mine +on-peek']
+    ~>  %bout.[0 '%station +on-peek']
     ^-  (unit (unit cage))
     [~ ~]
   ::
   ++  on-agent
     |=  [wir=wire sig=sign:agent:gall]
-    ~>  %bout.[0 '%mine +on-agent']
+    ~>  %bout.[0 '%station +on-agent']
     ^-  (quip card _this)
     `this
   ::
   ++  on-arvo
     |=  [wir=wire sig=sign-arvo]
-    ~>  %bout.[0 '%mine +on-arvo']
+    ~>  %bout.[0 '%station +on-arvo']
     ^-  (quip card _this)
     `this
   ::
   ++  on-watch
   |=  =path
-  ~>  %bout.[0 '%mine +on-watch']
+  ~>  %bout.[0 '%station +on-watch']
   ^-  (quip card _this)
   `this
   ::
   ++  on-fail
-    ~>  %bout.[0 '%mine +on-fail']
+    ~>  %bout.[0 '%station +on-fail']
     on-fail:def
   ::
   ++  on-leave
-    ~>  %bout.[0 '%mine +on-init']
+    ~>  %bout.[0 '%station +on-init']
     on-leave:def
   --
 |_  [bol=bowl:gall dek=(list card)]
 +*  dat  .
+    rea  (re-abed:realms:r-l bol ~)
 ++  emit  |=(=card dat(dek [card dek]))
 ++  emil  |=(lac=(list card) dat(dek (welp lac dek)))
 ++  abet

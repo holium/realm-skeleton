@@ -51,28 +51,32 @@
     |=  pax=path
     ~>  %bout.[0 '%station +on-peek']
     ^-  (unit (unit cage))
-    ::  (peek:cor pax)
+    :: =^  cards  state  (peek:cor pax)
+    :: [cards this]
     [~ ~]
   ::
   ++  on-agent
     |=  [pol=(pole knot) sig=sign:agent:gall]
     ~>  %bout.[0 '%station +on-agent']
     ^-  (quip card _this)
-    ::  abet:(agent:cor pol sig)
+    :: =^  cards  state  abet:(agent:cor pol sig)
+    :: [cards this]
     `this
   ::
   ++  on-arvo
     |=  [pol=(pole knot) sig=sign-arvo]
     ~>  %bout.[0 '%station +on-arvo']
     ^-  (quip card _this)
-    ::  abet:(arvo:cor pol sig)
+    :: =^  cards  state  abet:(arvo:cor pol sig)
+    :: [cards this]
     `this
   ::
   ++  on-watch
-    |=  pax=path
+    |=  pol=(pole knot)
     ~>  %bout.[0 '%station +on-watch']
     ^-  (quip card _this)
-    ::  abet:(watch:cor pax)
+    :: =^  cards  state  abet:(watch:cor pol)
+    :: [cards this]
     `this
   ::
   ++  on-fail
@@ -80,7 +84,7 @@
     on-fail:def
   ::
   ++  on-leave
-    ~>  %bout.[0 '%station +on-init']
+    ~>  %bout.[0 '%station +on-leave']
     on-leave:def
   ::
   --

@@ -19,10 +19,10 @@
 ^-  agent:gall
 ::
 =<
-  |_  =bowl:gall
+  |_  bol=bowl:gall
   +*  this  .
-      def   ~(. (defa this %|) bowl)
-      cor   ~(. +> [bowl ~])
+      def   ~(. (defa this %|) bol)
+      cor   ~(. +> [bol ~])
   ++  on-init
     ^-  (quip card _this)
     ~>  %bout.[0 '%station +on-init']

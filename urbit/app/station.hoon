@@ -1,4 +1,3 @@
-::  a space agent skeleton
 /-  *station
 /+  r-l=realm-lib
 /+  verb, dbug, defa=default-agent
@@ -8,9 +7,6 @@
 +$  versioned-state  $%(state-0)
 ::
 +$  state-0  [%0 ~]
-::
-::
-::  boilerplate
 ::
 +$  card  card:agent:gall
 --
@@ -25,13 +21,12 @@
 =<
   |_  =bowl:gall
   +*  this  .
-      def  ~(. (defa this %|) bowl)
+      def   ~(. (defa this %|) bowl)
       eng   ~(. +> [bowl ~])
   ++  on-init
     ^-  (quip card _this)
     ~>  %bout.[0 '%station +on-init']
-    =^  cards  state
-      abet:init:eng
+    =^  cards  state  abet:init:eng
     [cards this]
   ::
   ++  on-save
@@ -40,11 +35,10 @@
     !>(state)
   ::
   ++  on-load
-    |=  ole=vase
+    |=  vaz=vase
     ~>  %bout.[0 '%station +on-load']
     ^-  (quip card _this)
-    =^  cards  state
-      abet:(load:eng ole)
+    =^  cards  state  abet:(load:eng vaz)
     [cards this]
   ::
   ++  on-poke
@@ -55,28 +49,32 @@
     [cards this]
   ::
   ++  on-peek
-    |=  =path
+    |=  pax=path
     ~>  %bout.[0 '%station +on-peek']
     ^-  (unit (unit cage))
+    ::  (scry:eng pax)
     [~ ~]
   ::
   ++  on-agent
-    |=  [wir=wire sig=sign:agent:gall]
+    |=  [pol=(pole knot) sig=sign:agent:gall]
     ~>  %bout.[0 '%station +on-agent']
     ^-  (quip card _this)
+    ::  abet:(dude:eng pol sig)
     `this
   ::
   ++  on-arvo
-    |=  [wir=wire sig=sign-arvo]
+    |=  [pol=(pole knot) sig=sign-arvo]
     ~>  %bout.[0 '%station +on-arvo']
     ^-  (quip card _this)
+    ::  abet:(arvo:eng pol sig)
     `this
   ::
   ++  on-watch
-  |=  =path
-  ~>  %bout.[0 '%station +on-watch']
-  ^-  (quip card _this)
-  `this
+    |=  pax=path
+    ~>  %bout.[0 '%station +on-watch']
+    ^-  (quip card _this)
+    ::  abet:(watch:eng pax)
+    `this
   ::
   ++  on-fail
     ~>  %bout.[0 '%station +on-fail']
@@ -85,60 +83,32 @@
   ++  on-leave
     ~>  %bout.[0 '%station +on-init']
     on-leave:def
+  ::
   --
-|_  [bol=bowl:gall dek=(list card)]
+::
+|_  [bol=bowl:gall caz=(list card)]
 +*  dat  .
-++  emit  |=(=card dat(dek [card dek]))
-++  emil  |=(lac=(list card) dat(dek (welp lac dek)))
+++  emit  |=(c=card dat(caz [c caz]))
+++  emil  |=(lc=(list card) dat(caz (welp lc caz)))
 ++  abet
   ^-  (quip card _state)
-  [(flop dek) state]
+  [(flop caz) state]
+::  +init: handle on-init
 ::
 ++  init
   ^+  dat
   dat
+::  +load: handle on-load
 ::
 ++  load
   |=  vaz=vase
-  ^+  dat
   ?>  ?=([%0 *] q.vaz)
   dat(state !<(state-0 vaz))
+::  +poke: handle on-poke
+::
 ++  poke
   |=  [mar=mark vaz=vase]
-  ?>  =(%noun mar)
-  =+  act=!<(action vaz)
-  ?-  -.act
-      %all
-    ~&  >>>
-      ^-  spaces:r-l
-      re-abet-saz:(re-abed:realms:r-l bol [%| ~])
-    dat
-  ::
-      %host  
-    ~&  >>
-      ^-  spaces:r-l
-      re-abet-saz:(re-abed:realms:r-l bol [%| `who.act])
-    dat
-  ::
-      %space
-    =+  rel=(re-abed:realms:r-l bol [%& sap.act])
-    ?-    wat.act
-        %spaces
-      ~&  >  `spaces:r-l`re-abet-saz:rel  dat
-        %detail
-      ~&  >  `space:r-l`re-abet-det:rel  dat
-        %host
-      ~&  >  `ship`re-abet-hos:rel  dat
-        %owners
-      ~&  >  `(set ship)`re-abet-own:rel  dat
-        %pending
-      ~&  >  `(set ship)`re-abet-pen:rel  dat
-        %initiates
-      ~&  >  `(set ship)`re-abet-ini:rel  dat
-        %members
-      ~&  >  `(set ship)`re-abet-mem:rel  dat
-        %administrators
-      ~&  >  `(set ship)`re-abet-adm:rel  dat
-    ==
-  ==
+  ^+  dat
+  dat
+::
 --

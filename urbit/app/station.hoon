@@ -1,5 +1,5 @@
 /-  *station
-/+  verb, dbug, defa=default-agent
+/+  verb, dbug, agentio, defa=default-agent
 ::
 |%
 ::

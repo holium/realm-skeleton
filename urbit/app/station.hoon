@@ -52,7 +52,7 @@
     |=  pax=path
     ~>  %bout.[0 '%station +on-peek']
     ^-  (unit (unit cage))
-    ::  (scry:cor pax)
+    ::  (peek:cor pax)
     [~ ~]
   ::
   ++  on-agent

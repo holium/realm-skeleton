@@ -1,5 +1,4 @@
 /-  *station
-/+  r-l=realm-lib
 /+  verb, dbug, defa=default-agent
 ::
 |%

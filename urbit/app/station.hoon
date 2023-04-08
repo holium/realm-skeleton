@@ -103,6 +103,7 @@
 ::
 ++  load
   |=  =vase
+  ^+  core
   ?>  ?=([%0 *] q.vase)
   core(state !<(state-0 vase))
 ::  +poke: handle on-poke

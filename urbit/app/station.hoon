@@ -1,5 +1,5 @@
 /-  *station
-/+  verb, dbug, agentio, defa=default-agent
+/+  verb, dbug, defa=default-agent
 ::
 |%
 ::
@@ -21,11 +21,11 @@
   |_  bol=bowl:gall
   +*  this  .
       def   ~(. (defa this %|) bol)
-      cor   ~(. +> [bol ~])
+      core   ~(. +> [bol ~])
   ++  on-init
     ^-  (quip card _this)
     ~>  %bout.[0 '%station +on-init']
-    =^  cards  state  abet:init:cor
+    =^  cards  state  abet:init:core
     [cards this]
   ::
   ++  on-save
@@ -34,48 +34,48 @@
     !>(state)
   ::
   ++  on-load
-    |=  vaz=vase
+    |=  =vase
     ~>  %bout.[0 '%station +on-load']
     ^-  (quip card _this)
-    =^  cards  state  abet:(load:cor vaz)
+    =^  cards  state  abet:(load:core vase)
     [cards this]
   ::
   ++  on-poke
-    |=  cag=cage
+    |=  =cage
     ~>  %bout.[0 '%station +on-poke']
     ^-  (quip card _this)
-    =^  cards  state  abet:(poke:cor cag)
+    =^  cards  state  abet:(poke:core cage)
     [cards this]
   ::
   ++  on-peek
-    |=  pax=path
+    |=  =path
     ~>  %bout.[0 '%station +on-peek']
     ^-  (unit (unit cage))
-    :: =^  cards  state  (peek:cor pax)
+    :: =^  cards  state  (peek:core path)
     :: [cards this]
     [~ ~]
   ::
   ++  on-agent
-    |=  [pol=(pole knot) sig=sign:agent:gall]
+    |=  [pole=(pole knot) =sign:agent:gall]
     ~>  %bout.[0 '%station +on-agent']
     ^-  (quip card _this)
-    :: =^  cards  state  abet:(agent:cor pol sig)
+    :: =^  cards  state  abet:(agent:core pole sign)
     :: [cards this]
     `this
   ::
   ++  on-arvo
-    |=  [pol=(pole knot) sig=sign-arvo]
+    |=  [pole=(pole knot) sign=sign-arvo]
     ~>  %bout.[0 '%station +on-arvo']
     ^-  (quip card _this)
-    :: =^  cards  state  abet:(arvo:cor pol sig)
+    :: =^  cards  state  abet:(arvo:core pole sign)
     :: [cards this]
     `this
   ::
   ++  on-watch
-    |=  pol=(pole knot)
+    |=  pole=(pole knot)
     ~>  %bout.[0 '%station +on-watch']
     ^-  (quip card _this)
-    :: =^  cards  state  abet:(watch:cor pol)
+    :: =^  cards  state  abet:(watch:core pole)
     :: [cards this]
     `this
   ::
@@ -89,29 +89,27 @@
   ::
   --
 ::
-|_  [bol=bowl:gall dek=(list card)]
-+*  cor  .
-++  emit  |=(=card cor(dek [card dek]))
-++  emil  |=(lac=(list card) cor(dek (welp lac dek)))
-++  abet
-  ^-  (quip card _state)
-  [(flop dek) state]
+|_  [=bowl:gall cards=(list card)]
++*  core  .
+++  abet  [(flop cards) state]
+++  emit  |=(=card core(cards [card cards]))
+++  emil  |=(new-cards=(list card) core(cards (welp new-cards cards)))
 ::  +init: handle on-init
 ::
 ++  init
-  ^+  cor
-  cor
+  ^+  core
+  core
 ::  +load: handle on-load
 ::
 ++  load
-  |=  vaz=vase
-  ?>  ?=([%0 *] q.vaz)
-  cor(state !<(state-0 vaz))
+  |=  =vase
+  ?>  ?=([%0 *] q.vase)
+  core(state !<(state-0 vase))
 ::  +poke: handle on-poke
 ::
 ++  poke
-  |=  [mar=mark vaz=vase]
-  ^+  cor
-  cor
+  |=  [=mark =vase]
+  ^+  core
+  core
 ::
 --
